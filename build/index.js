@@ -146,7 +146,8 @@ __webpack_require__.r(__webpack_exports__);
  * @return {Element} Element to render.
  */
 function save() {
-  const listPosts = "http://wordpress.local/wp-json/wp/v2/posts";
+  const listPosts = "http://wordpress.local/wp-json/wp/v2/posts"; // domain-name/wp-json/wp/v2/posts
+
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
   }, listPosts.map((i, post) => {

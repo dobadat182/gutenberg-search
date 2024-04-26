@@ -16,7 +16,7 @@ import { useBlockProps } from "@wordpress/block-editor";
  * @return {Element} Element to render.
  */
 export default function save() {
-	const listPosts = "http://wordpress.local/wp-json/wp/v2/posts";
+	const listPosts = "http://wordpress.local/wp-json/wp/v2/posts"; // domain-name/wp-json/wp/v2/posts
 
 	return (
 		<div {...useBlockProps.save()}>
