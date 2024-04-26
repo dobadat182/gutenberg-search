@@ -1,28 +1,28 @@
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
+import react, { useEffect, useState } from "react";
+import axios from "axios";
 import { useBlockProps } from "@wordpress/block-editor";
 
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
 export default function save() {
-	const listPosts = "http://wordpress.local/wp-json/wp/v2/posts"; // domain-name/wp-json/wp/v2/posts
+	const baseUrl = "http://wordpress.local";
+	// const [data, setData] = useState([]);
+	let data;
+
+	useEffect(() => {
+		async function getPosts() {
+			const response = await axios.get(`${baseUrl}/wp-json/wp/v2/posts`);
+			data = response.data;
+
+			console.log(data);
+		}
+
+		getPosts();
+	}, []);
 
 	return (
 		<div {...useBlockProps.save()}>
-			{listPosts.map((i, post) => {
-				<div>Post + {i}</div>;
-			})}
+			<h1>Get data - from saved </h1>
+
+			{data && posts.map((post) => <h3 key={post.id}>Example</h3>)}
 		</div>
 	);
 }
